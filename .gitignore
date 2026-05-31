@@ -1,0 +1,12 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (Credenciales)
+.env
+
+# Docker (Volúmenes locales que no se comparten)
+postgres_data/
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
