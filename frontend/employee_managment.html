@@ -1,0 +1,359 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ReservaPro - Empleados</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #6366F1; /* indigo */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #6366F1; /* indigo */
+        }
+        
+        /* Modal visibility logic for demo purposes */
+        #add-employee-modal {
+            display: none;
+        }
+        #add-employee-modal.show {
+            display: flex;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#44474c",
+                        "outline-variant": "#c5c6cc",
+                        "primary-fixed": "#d9e3f6",
+                        "on-primary-container": "#8690a1",
+                        "on-secondary-fixed-variant": "#404754",
+                        "on-tertiary-fixed": "#261906",
+                        "surface-container-low": "#f6f3f4",
+                        "tertiary-container": "#342611",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae7e9",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-container": "#f0edee",
+                        "on-secondary-container": "#5e6572",
+                        "on-primary-fixed": "#121c2a",
+                        "on-primary-fixed-variant": "#3d4756",
+                        "inverse-primary": "#bdc7d9",
+                        "surface": "#fbf9fa",
+                        "on-tertiary-fixed-variant": "#55442d",
+                        "primary-fixed-dim": "#bdc7d9",
+                        "inverse-surface": "#303031",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fbf9fa",
+                        "on-error-container": "#93000a",
+                        "primary": "#1F2937",
+                        "surface-variant": "#e4e2e3",
+                        "tertiary-fixed": "#f8dfbf",
+                        "surface-tint": "#555f6f",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1b1d",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "primary-container": "#1f2937",
+                        "surface-dim": "#dcd9da",
+                        "secondary-fixed": "#dce2f3",
+                        "secondary": "#585f6c",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0f1",
+                        "tertiary-fixed-dim": "#dbc3a4",
+                        "outline": "#75777c",
+                        "background": "#fbf9fa",
+                        "tertiary": "#1d1202",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dce2f3",
+                        "on-tertiary-container": "#a28c70",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1b1d",
+                        "surface-container-highest": "#e4e2e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch_target": "44px",
+                        "sm": "8px",
+                        "container_max_width": "1280px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h2": ["Inter"],
+                        "h1-mobile": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "h2": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "h1": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-lg text-body-lg antialiased min-h-screen flex">
+<!-- Shared Component: SideNavBar -->
+<nav class="bg-[#1F2937] border-r border-[#1F2937] hidden md:flex flex-col fixed left-0 top-0 h-full w-[280px] py-lg z-40">
+<!-- Header -->
+<div class="px-lg pb-lg flex flex-col items-center border-b border-gray-700 mb-lg">
+<div class="w-16 h-16 rounded-full bg-gray-800 text-[#F3F4F6] flex items-center justify-center mb-md overflow-hidden">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 32px;">domain</span>
+</div>
+<h2 class="font-h3 text-h3 text-[#F3F4F6] text-center">ReservaPro Admin</h2>
+<p class="font-body-sm text-body-sm text-[#9CA3AF] mt-unit text-center">Business Manager</p>
+<button class="mt-lg w-full h-touch_target bg-[#6366F1] text-white rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-sm hover:bg-indigo-600 transition-colors">
+<span class="material-symbols-outlined">add</span>
+                New Booking
+            </button>
+</div>
+<!-- Main Tabs -->
+<div class="flex-1 overflow-y-auto flex flex-col gap-unit px-md">
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">calendar_month</span>
+                Calendar
+            </a>
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">category</span>
+                Services
+            </a>
+<!-- Active Tab -->
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg bg-gray-800 text-[#F3F4F6] border-l-4 border-[#6366F1] font-bold transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#6366F1]" style="font-variation-settings: 'FILL' 1;">group</span>
+                Employees
+            </a>
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">analytics</span>
+                Metrics
+            </a>
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">settings</span>
+                Settings
+            </a>
+</div>
+<!-- Footer Tabs -->
+<div class="px-md mt-auto pt-lg border-t border-gray-700 flex flex-col gap-unit">
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-md px-md h-touch_target rounded-lg text-[#F3F4F6] hover:bg-gray-800 transition-all duration-200 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[#9CA3AF]">logout</span>
+                Log Out
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-[280px] p-lg md:p-xl flex flex-col gap-xl max-w-container_max_width mx-auto w-full">
+<!-- Page Header -->
+<header class="flex flex-col sm:flex-row sm:items-center justify-between gap-md">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">Empleados</h1>
+<p class="font-body-sm text-body-sm text-secondary mt-unit">Gestiona el personal y sus asignaciones de servicios.</p>
+</div>
+<button class="h-touch_target px-lg bg-[#1F2937] text-white rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-sm hover:bg-gray-800 shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)] transition-all" onclick="document.getElementById('add-employee-modal').classList.add('show')">
+<span class="material-symbols-outlined">person_add</span>
+                Agregar empleado
+            </button>
+</header>
+<!-- Data List / Table -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)] border border-outline-variant overflow-hidden">
+<!-- Table Header (Desktop Only) -->
+<div class="hidden md:grid grid-cols-12 gap-lg p-lg bg-surface-container-low border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-3">Empleado</div>
+<div class="col-span-4">Servicios</div>
+<div class="col-span-2 text-center">Horas Semanales</div>
+<div class="col-span-2 text-center">Estado</div>
+<div class="col-span-1 text-right">Acciones</div>
+</div>
+<!-- List Items -->
+<div class="flex flex-col divide-y divide-outline-variant">
+<!-- Item 1 -->
+<article class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg p-lg items-center hover:bg-surface-container transition-colors">
+<!-- Identity -->
+<div class="col-span-1 md:col-span-3 flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-h3 text-h3 shrink-0">
+                            MR
+                        </div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">María Rodríguez</h3>
+<p class="font-body-sm text-body-sm text-secondary">Especialista Principal</p>
+</div>
+</div>
+<!-- Services -->
+<div class="col-span-1 md:col-span-4 flex flex-wrap gap-sm">
+<span class="bg-[#EEF2FF] text-[#6366F1] px-md py-xs rounded-full font-body-sm text-body-sm border border-[#C7D2FE]">Corte de Cabello</span>
+<span class="bg-[#EEF2FF] text-[#6366F1] px-md py-xs rounded-full font-body-sm text-body-sm border border-[#C7D2FE]">Colorimetría</span>
+<span class="bg-[#EEF2FF] text-[#6366F1] px-md py-xs rounded-full font-body-sm text-body-sm border border-[#C7D2FE]">Peinado</span>
+</div>
+<!-- Hours -->
+<div class="col-span-1 md:col-span-2 flex items-center justify-between md:justify-center">
+<span class="md:hidden font-label-caps text-label-caps text-on-surface-variant">Horas:</span>
+<span class="font-body-lg text-body-lg text-on-surface">36h</span>
+</div>
+<!-- Status -->
+<div class="col-span-1 md:col-span-2 flex items-center justify-between md:justify-center">
+<span class="md:hidden font-label-caps text-label-caps text-on-surface-variant">Estado:</span>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out translate-x-4 border-[#6366F1] z-10" id="toggle1" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-[#6366F1] cursor-pointer transition-colors duration-200 ease-in-out" for="toggle1"></label>
+</div>
+</div>
+<!-- Actions -->
+<div class="col-span-1 md:col-span-1 flex items-center justify-end gap-sm mt-md md:mt-0">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#6366F1] hover:bg-indigo-50 transition-colors" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg p-lg items-center hover:bg-surface-container transition-colors">
+<div class="col-span-1 md:col-span-3 flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-h3 text-h3 shrink-0">
+                            JS
+                        </div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Juan Sánchez</h3>
+<p class="font-body-sm text-body-sm text-secondary">Barbero</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex flex-wrap gap-sm">
+<span class="bg-[#EEF2FF] text-[#6366F1] px-md py-xs rounded-full font-body-sm text-body-sm border border-[#C7D2FE]">Corte Clásico</span>
+<span class="bg-[#EEF2FF] text-[#6366F1] px-md py-xs rounded-full font-body-sm text-body-sm border border-[#C7D2FE]">Arreglo de Barba</span>
+</div>
+<div class="col-span-1 md:col-span-2 flex items-center justify-between md:justify-center">
+<span class="md:hidden font-label-caps text-label-caps text-on-surface-variant">Horas:</span>
+<span class="font-body-lg text-body-lg text-on-surface">40h</span>
+</div>
+<div class="col-span-1 md:col-span-2 flex items-center justify-between md:justify-center">
+<span class="md:hidden font-label-caps text-label-caps text-on-surface-variant">Estado:</span>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out translate-x-4 border-[#6366F1] z-10" id="toggle2" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-[#6366F1] cursor-pointer transition-colors duration-200 ease-in-out" for="toggle2"></label>
+</div>
+</div>
+<div class="col-span-1 md:col-span-1 flex items-center justify-end gap-sm mt-md md:mt-0">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#6366F1] hover:bg-indigo-50 transition-colors" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Add/Edit Employee Modal Overlay -->
+<div class="fixed inset-0 bg-on-surface/30 backdrop-blur-[4px] z-50 items-center justify-center p-md" id="add-employee-modal">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] w-full max-w-[600px] max-h-[921px] flex flex-col border border-outline-variant">
+<!-- Modal Header -->
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-h2 text-h2 text-on-surface">Agregar nuevo empleado</h2>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-high transition-colors" onclick="document.getElementById('add-employee-modal').classList.remove('show')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body (Form) -->
+<div class="p-lg overflow-y-auto flex-1 flex flex-col gap-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Name -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Nombre completo</label>
+<input class="h-touch_target px-md rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-[#6366F1] focus:ring-2 focus:ring-indigo-200 font-body-lg text-body-lg transition-all" placeholder="Ej. Ana Pérez" type="text">
+</div>
+<!-- Role -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Rol / Puesto</label>
+<input class="h-touch_target px-md rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-[#6366F1] focus:ring-2 focus:ring-indigo-200 font-body-lg text-body-lg transition-all" placeholder="Ej. Estilista" type="text">
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Correo electrónico</label>
+<input class="h-touch_target px-md rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-[#6366F1] focus:ring-2 focus:ring-indigo-200 font-body-lg text-body-lg transition-all" placeholder="ana@ejemplo.com" type="email">
+</div>
+<!-- Phone -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Teléfono</label>
+<input class="h-touch_target px-md rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-[#6366F1] focus:ring-2 focus:ring-indigo-200 font-body-lg text-body-lg transition-all" placeholder="+52 123 456 7890" type="tel">
+</div>
+</div>
+<!-- Services Divider -->
+<hr class="border-outline-variant my-md">
+<!-- Services Multi-Select Area -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Servicios asignados</label>
+<div class="flex flex-wrap gap-md">
+<label class="flex items-center gap-sm cursor-pointer bg-surface-container-low px-md py-xs rounded-full border border-outline-variant hover:border-[#6366F1] transition-colors">
+<input class="text-[#6366F1] rounded focus:ring-[#6366F1] border-outline-variant" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface">Corte Clásico</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer bg-surface-container-low px-md py-xs rounded-full border border-outline-variant hover:border-[#6366F1] transition-colors">
+<input class="text-[#6366F1] rounded focus:ring-[#6366F1] border-outline-variant" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface">Colorimetría</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer bg-surface-container-low px-md py-xs rounded-full border border-outline-variant hover:border-[#6366F1] transition-colors">
+<input class="text-[#6366F1] rounded focus:ring-[#6366F1] border-outline-variant" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface">Manicura</span>
+</label>
+</div>
+</div>
+<!-- Schedule Logic area -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Citas máximas diarias</label>
+<input class="h-touch_target px-md rounded-lg border border-outline-variant bg-surface focus:outline-none focus:border-[#6366F1] focus:ring-2 focus:ring-indigo-200 font-body-lg text-body-lg transition-all w-32" min="1" type="number" value="8">
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-lg border-t border-outline-variant flex justify-end gap-md bg-surface-container-low rounded-b-xl">
+<button class="h-touch_target px-lg rounded-lg border border-outline-variant text-on-surface font-label-caps text-label-caps hover:bg-surface-container transition-colors" onclick="document.getElementById('add-employee-modal').classList.remove('show')">
+                    Cancelar
+                </button>
+<button class="h-touch_target px-lg rounded-lg bg-[#1F2937] text-white font-label-caps text-label-caps hover:bg-gray-800 transition-colors shadow-sm">
+                    Guardar empleado
+                </button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ReservaPro - Iniciar Sesión / Crear Cuenta</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom Ambient Shadows based on style guide */
+        .shadow-ambient-1 {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+        }
+        
+        /* Form Field Focus Glow */
+        .input-focus-glow:focus {
+            box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.2); /* Dark slate glow */
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-surface-variant": "#44474c",
+                "outline-variant": "#c5c6cc",
+                "primary-fixed": "#d9e3f6",
+                "on-primary-container": "#8690a1",
+                "on-secondary-fixed-variant": "#404754",
+                "on-tertiary-fixed": "#261906",
+                "surface-container-low": "#f6f3f4",
+                "tertiary-container": "#342611",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#eae7e9",
+                "on-secondary-fixed": "#151c27",
+                "surface-container": "#f0edee",
+                "on-secondary-container": "#5e6572",
+                "on-primary-fixed": "#121c2a",
+                "on-primary-fixed-variant": "#3d4756",
+                "inverse-primary": "#bdc7d9",
+                "surface": "#fbf9fa",
+                "on-tertiary-fixed-variant": "#55442d",
+                "primary-fixed-dim": "#bdc7d9",
+                "inverse-surface": "#303031",
+                "error-container": "#ffdad6",
+                "surface-bright": "#fbf9fa",
+                "on-error-container": "#93000a",
+                "primary": "#0a1422",
+                "surface-variant": "#e4e2e3",
+                "tertiary-fixed": "#f8dfbf",
+                "surface-tint": "#555f6f",
+                "on-primary": "#ffffff",
+                "on-surface": "#1b1b1d",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#c0c7d6",
+                "primary-container": "#1f2937",
+                "surface-dim": "#dcd9da",
+                "secondary-fixed": "#dce2f3",
+                "secondary": "#585f6c",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#f3f0f1",
+                "tertiary-fixed-dim": "#dbc3a4",
+                "outline": "#75777c",
+                "background": "#fbf9fa",
+                "tertiary": "#1d1202",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#dce2f3",
+                "on-tertiary-container": "#a28c70",
+                "error": "#ba1a1a",
+                "on-background": "#1b1b1d",
+                "surface-container-highest": "#e4e2e3"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "touch_target": "44px",
+                "unit": "4px",
+                "xxs": "4px",
+                "gutter": "24px",
+                "md": "16px",
+                "xs": "8px",
+                "xl": "32px",
+                "lg": "24px",
+                "sm": "12px",
+                "margin-desktop": "32px",
+                "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "title-lg": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "title-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+</head>
+<body class="bg-[#F3F4F6] transition-colors duration-300 dark:bg-inverse-surface min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Dark Mode Toggle -->
+<div class="fixed top-lg right-lg z-50">
+<button aria-label="Toggle Dark Mode" class="w-touch_target h-touch_target flex items-center justify-center rounded-full bg-surface-container-lowest dark:bg-surface-dim shadow-ambient-1 text-on-surface dark:text-on-secondary transition-all hover:scale-105 active:scale-95" id="themeToggle">
+<span class="material-symbols-outlined dark:hidden" style="font-variation-settings: 'FILL' 0;">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</button>
+</div>
+<!-- Main Card -->
+<main class="w-full max-w-[420px] bg-surface-container-lowest dark:bg-surface-dim rounded-xl shadow-ambient-1 overflow-hidden transition-all duration-300 transform scale-100 opacity-100 relative">
+<!-- Header / Logo -->
+<div class="pt-xl px-xl pb-lg flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 28px;">calendar_month</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface dark:text-on-secondary">ReservaPro</h1>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-surface-variant dark:border-outline px-xl">
+<button class="flex-1 pb-sm font-label-md text-label-md uppercase border-b-2 border-[#6366F1] text-[#6366F1] transition-all" id="tab-login" onclick="switchTab('login')">
+                Iniciar sesión
+            </button>
+<button class="flex-1 pb-sm font-label-md text-label-md uppercase border-b-2 border-transparent text-secondary dark:text-secondary-fixed-dim hover:text-on-surface dark:hover:text-on-secondary transition-all" id="tab-register" onclick="switchTab('register')">
+                Crear cuenta
+            </button>
+</div>
+<!-- Form Container -->
+<div class="p-xl relative min-h-[350px]">
+<!-- Login Form -->
+<form class="absolute inset-0 p-xl flex flex-col gap-md transition-all duration-300 opacity-100 z-10 translate-x-0" id="form-login">
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="login-email">Email</label>
+<input class="h-touch_target w-full rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="login-email" placeholder="tu@email.com" type="email">
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="login-password">Contraseña</label>
+<a class="font-body-md text-body-md text-[#6366F1] hover:text-[#4F46E5] transition-colors" href="#">¿Olvidé mi contraseña?</a>
+</div>
+<input class="h-touch_target w-full rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="login-password" placeholder="••••••••" type="password">
+</div>
+<button class="mt-sm h-touch_target w-full rounded-xl bg-primary-container font-label-md text-label-md uppercase text-on-primary shadow-sm hover:bg-primary-container/90 active:scale-[0.98] transition-all" type="button">
+                    Entrar
+                </button>
+</form>
+<!-- Register Form -->
+<form class="absolute inset-0 p-xl flex flex-col gap-md transition-all duration-300 opacity-0 -z-10 translate-x-8 pointer-events-none" id="form-register">
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="reg-name">Nombre del negocio</label>
+<input class="h-touch_target w-full rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="reg-name" placeholder="Ej. Mi Peluquería" type="text">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="reg-email">Email</label>
+<input class="h-touch_target w-full rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="reg-email" placeholder="contacto@negocio.com" type="email">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="reg-password">Contraseña</label>
+<input class="h-touch_target w-full rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="reg-password" placeholder="Mínimo 8 caracteres" type="password">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim" for="reg-type">Tipo de cuenta</label>
+<div class="relative">
+<select class="h-touch_target w-full appearance-none rounded-xl border border-outline-variant dark:border-outline bg-transparent px-md font-body-lg text-body-lg text-on-surface dark:text-on-secondary focus:border-[#6366F1] input-focus-glow transition-all outline-none" id="reg-type">
+<option class="text-on-surface" value="personal">Personal / Independiente</option>
+<option class="text-on-surface" value="pyme">PYME / Empresa</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<button class="mt-sm h-touch_target w-full rounded-xl bg-primary-container font-label-md text-label-md uppercase text-on-primary shadow-sm hover:bg-primary-container/90 active:scale-[0.98] transition-all" type="button">
+                    Crear cuenta
+                </button>
+</form>
+</div>
+<!-- Footer Prompt -->
+<div class="bg-surface-container-low dark:bg-[#202722] p-md text-center border-t border-surface-variant dark:border-outline/50">
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+                ¿Tienes un negocio grande? <a class="text-[#6366F1] font-medium hover:underline hover:text-[#4F46E5]" href="#">Regístrate como PYME Plus</a>
+</p>
+</div>
+</main>
+<script>
+        // Dark Mode Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlDoc = document.documentElement;
+
+        // Check for saved theme preference or OS preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlDoc.classList.add('dark');
+            htmlDoc.classList.remove('light');
+        } else {
+            htmlDoc.classList.remove('dark');
+            htmlDoc.classList.add('light');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlDoc.classList.toggle('dark');
+            htmlDoc.classList.toggle('light');
+            if (htmlDoc.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Tab Switching Logic
+        function switchTab(tab) {
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+
+            // Reset styles
+            const activeClasses = ['border-[#6366F1]', 'text-[#6366F1]'];
+            const inactiveClasses = ['border-transparent', 'text-secondary', 'dark:text-secondary-fixed-dim'];
+
+            if (tab === 'login') {
+                // Style Tabs
+                tabLogin.classList.add(...activeClasses);
+                tabLogin.classList.remove(...inactiveClasses);
+                tabRegister.classList.add(...inactiveClasses);
+                tabRegister.classList.remove(...activeClasses);
+
+                // Animate Forms
+                loginForm.classList.remove('opacity-0', '-z-10', '-translate-x-8', 'pointer-events-none');
+                loginForm.classList.add('opacity-100', 'z-10', 'translate-x-0');
+                
+                registerForm.classList.remove('opacity-100', 'z-10', 'translate-x-0');
+                registerForm.classList.add('opacity-0', '-z-10', 'translate-x-8', 'pointer-events-none');
+            } else {
+                // Style Tabs
+                tabRegister.classList.add(...activeClasses);
+                tabRegister.classList.remove(...inactiveClasses);
+                tabLogin.classList.add(...inactiveClasses);
+                tabLogin.classList.remove(...activeClasses);
+
+                // Animate Forms
+                registerForm.classList.remove('opacity-0', '-z-10', 'translate-x-8', 'pointer-events-none');
+                registerForm.classList.add('opacity-100', 'z-10', 'translate-x-0');
+                
+                loginForm.classList.remove('opacity-100', 'z-10', 'translate-x-0');
+                loginForm.classList.add('opacity-0', '-z-10', '-translate-x-8', 'pointer-events-none');
+            }
+        }
+    </script>
+</body></html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ReservaPro - Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-surface-variant": "#44474c",
+                "outline-variant": "#c5c6cc",
+                "primary-fixed": "#d9e3f6",
+                "on-primary-container": "#ffffff",
+                "on-secondary-fixed-variant": "#404754",
+                "on-tertiary-fixed": "#261906",
+                "surface-container-low": "#f6f3f4",
+                "tertiary-container": "#342611",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#eae7e9",
+                "on-secondary-fixed": "#151c27",
+                "surface-container": "#f0edee",
+                "on-secondary-container": "#5e6572",
+                "on-primary-fixed": "#121c2a",
+                "on-primary-fixed-variant": "#3d4756",
+                "inverse-primary": "#bdc7d9",
+                "surface": "#fbf9fa",
+                "on-tertiary-fixed-variant": "#55442d",
+                "primary-fixed-dim": "#bdc7d9",
+                "inverse-surface": "#303031",
+                "error-container": "#ffdad6",
+                "surface-bright": "#fbf9fa",
+                "on-error-container": "#93000a",
+                "primary": "#1f2937",
+                "surface-variant": "#e4e2e3",
+                "tertiary-fixed": "#f8dfbf",
+                "surface-tint": "#555f6f",
+                "on-primary": "#ffffff",
+                "on-surface": "#1b1b1d",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#c0c7d6",
+                "primary-container": "#6366f1",
+                "surface-dim": "#dcd9da",
+                "secondary-fixed": "#dce2f3",
+                "secondary": "#585f6c",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#f3f0f1",
+                "tertiary-fixed-dim": "#dbc3a4",
+                "outline": "#75777c",
+                "background": "#fbf9fa",
+                "tertiary": "#1d1202",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#dce2f3",
+                "on-tertiary-container": "#a28c70",
+                "error": "#ba1a1a",
+                "on-background": "#1b1b1d",
+                "surface-container-highest": "#e4e2e3"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "unit": "4px",
+                "xxs": "4px",
+                "gutter": "24px",
+                "md": "16px",
+                "xs": "8px",
+                "xl": "32px",
+                "lg": "24px",
+                "sm": "12px",
+                "margin-desktop": "32px",
+                "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "title-lg": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "title-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        
+        /* Soft, approachable shadows (Level 1 & 2) */
+        .elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06); }
+        .elevation-2 { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+        
+        /* Chart placeholders */
+        .chart-placeholder-bg { background: linear-gradient(135deg, rgba(31, 41, 55, 0.05) 0%, rgba(243, 244, 246, 0.5) 100%); border: 1px dashed #c5c6cc; }
+        
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcd9da; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c5c6cc; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full py-lg bg-primary dark:bg-surface-dim border-r border-outline-variant fixed left-0 top-0 w-[280px] z-40 transition-all duration-200 ease-in-out">
+<div class="px-lg pb-xl border-b border-outline-variant/30 flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Business Logo" class="w-full h-full object-cover" data-alt="A clean, professional abstract geometric logo in shades of emerald green and slate grey, set against a crisp white background. The logo design is modern, conveying trust and reliability suitable for a B2B SaaS scheduling platform. Warm minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCynn6z5HZeFH50wKOvRNghydi2Cl3OqFY8caqqA7NXGDCSsb7nZTLt-fU84Cvr52eUZaO0gmPxBvjAT22bDZVD4bRrRA6sCcdzJN3JO6eug_VmwAT1gTUPTDS4yPv6isnLYcL2bwbgjOpG4M39tDIFgDIoFvRIs8pLxpsm6vNAcrfYAZ729hJdOdIIqwEOXZ0iTBg08qPEXLbrxjwK5gYd4Xrn-JTBWbPeT8pQtaOWut3e5gQWOOeD">
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-[#F3F4F6] dark:text-primary-fixed-dim">ReservaPro Admin</h2>
+<p class="font-body-md text-body-md text-[#9CA3AF]">Business Manager</p>
+</div>
+</div>
+<div class="px-lg py-md">
+<button class="w-full h-[44px] bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center gap-sm font-label-md text-label-md hover:bg-[#4f46e5] transition-colors elevation-1 hover:elevation-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Booking
+            </button>
+</div>
+<nav class="flex-1 overflow-y-auto py-sm px-md space-y-1 mt-md">
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-[#374151] dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-[#374151] dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                Calendar
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-[#374151] dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">category</span>
+                Services
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-[#374151] dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                Employees
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg bg-primary-container text-on-primary-container border-l-4 border-primary font-bold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px] fill-icon">analytics</span>
+                Metrics
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-surface-container-low hover:bg-[#374151] dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-md py-md mt-auto border-t border-outline-variant/30 space-y-1">
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-[#374151] transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-md px-md h-[44px] rounded-lg text-[#9CA3AF] dark:text-secondary-fixed-dim hover:bg-[#374151] transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                Log Out
+            </a>
+</div>
+</aside>
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center px-gutter h-16 w-full z-50 fixed top-0 bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[24px] text-primary">menu</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">ReservaPro</span>
+</div>
+<div class="flex items-center gap-sm text-primary dark:text-primary-fixed-dim">
+<button class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center rounded-full hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden ml-sm">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnsmSL_hZKY-S-Com40c7FtP59P1-plmpR8IKM1ElNfixXnTrnSG5pNmQB9r3e__onNhAVbEjk_TPIAW3RnojJF13n_67gUHuR9lEzasP6crk6q27aLhrkhnTjTILbFgZpBE-j7QWHPOmhbP7imV45J_7dbeD342QO6qqKUbj9ty6eppduEcklqvdNu2uXC0DFXwBi3pN3eGgdc4UsvWfzEmJymz-T9pQSCd46lEkGE6EfXrLAirsC">
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] pt-16 md:pt-0 p-lg md:p-xl max-w-[1280px] mx-auto w-full">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-lg mb-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Métricas del Sistema</h1>
+<p class="font-body-md text-body-md text-secondary">Overview of platform performance and usage.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-md">
+<!-- Date Picker -->
+<div class="relative flex items-center h-[44px] bg-surface-container-lowest border border-outline-variant rounded-lg px-md hover:border-primary focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-container/30 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-secondary mr-sm text-[20px]">calendar_today</span>
+<select class="appearance-none bg-transparent border-none p-0 pr-xl font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer w-40">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+<option>This Month</option>
+<option>Year to Date</option>
+</select>
+<span class="material-symbols-outlined text-secondary absolute right-md pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+<!-- Export Button -->
+<button class="h-[44px] px-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md rounded-lg hover:bg-surface-container-low flex items-center gap-sm transition-colors w-full sm:w-auto justify-center">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Descargar CSV
+                </button>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<p class="font-body-md text-body-md text-secondary">Total Businesses</p>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">1,248</h3>
+<div class="flex items-center gap-xs mt-sm text-primary-container font-label-md text-[11px]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+12.5% vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex justify-between items-start mb-md">
+<p class="font-body-md text-body-md text-secondary">Total Bookings</p>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">45,912</h3>
+<div class="flex items-center gap-xs mt-sm text-primary-container font-label-md text-[11px]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+8.2% vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<p class="font-body-md text-body-md text-secondary">Active Users</p>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">8,530</h3>
+<div class="flex items-center gap-xs mt-sm text-primary-container font-label-md text-[11px]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+4.1% vs last period</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<p class="font-body-md text-body-md text-secondary">Monthly Revenue</p>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">$124,500</h3>
+<div class="flex items-center gap-xs mt-sm text-primary-container font-label-md text-[11px]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+18.3% vs last period</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Charts Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-xl">
+<!-- Main Chart: Line (Spans 2 cols) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface">Bookings Over Time</h3>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="flex-1 min-h-[300px] chart-placeholder-bg rounded-lg flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 p-md flex items-end">
+<svg class="w-full h-full text-primary-container opacity-20" preserveAspectRatio="none" viewBox="0 0 100 40">
+<path d="M0,40 L0,30 C10,35 20,15 30,20 C40,25 50,5 60,15 C70,25 80,10 90,5 L100,0 L100,40 Z" fill="currentColor"></path>
+<path d="M0,30 C10,35 20,15 30,20 C40,25 50,5 60,15 C70,25 80,10 90,5 L100,0" fill="none" stroke="#6366f1" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-body-md text-body-md text-secondary bg-surface/80 px-md py-xs rounded-full backdrop-blur-sm relative z-10">[Line Chart: Bookings/Day Visualization]</span>
+</div>
+</div>
+<!-- Side Chart: Bar -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface">Top Services</h3>
+</div>
+<div class="flex-1 min-h-[300px] flex flex-col justify-end gap-md pt-xl">
+<!-- Bar items -->
+<div class="flex items-center gap-sm">
+<span class="w-16 font-label-md text-[10px] text-secondary truncate">Haircut</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[85%]"></div>
+</div>
+<span class="w-8 text-right font-body-md text-[12px] text-on-surface">85%</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-16 font-label-md text-[10px] text-secondary truncate">Consult</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/80 rounded-full w-[65%]"></div>
+</div>
+<span class="w-8 text-right font-body-md text-[12px] text-on-surface">65%</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-16 font-label-md text-[10px] text-secondary truncate">Massage</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/60 rounded-full w-[45%]"></div>
+</div>
+<span class="w-8 text-right font-body-md text-[12px] text-on-surface">45%</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-16 font-label-md text-[10px] text-secondary truncate">Therapy</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/40 rounded-full w-[30%]"></div>
+</div>
+<span class="w-8 text-right font-body-md text-[12px] text-on-surface">30%</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-16 font-label-md text-[10px] text-secondary truncate">Fitness</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/20 rounded-full w-[15%]"></div>
+</div>
+<span class="w-8 text-right font-body-md text-[12px] text-on-surface">15%</span>
+</div>
+</div>
+</div>
+<!-- Bottom Chart 1: Pie -->
+<div class="bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface">Business Types</h3>
+</div>
+<div class="flex-1 min-h-[250px] chart-placeholder-bg rounded-lg flex items-center justify-center relative">
+<div class="w-32 h-32 rounded-full border-[16px] border-primary border-t-primary-container/30 border-r-primary-container/60 border-l-primary-container relative">
+<div class="absolute inset-0 m-auto w-16 h-16 bg-surface-container-lowest rounded-full"></div>
+</div>
+<span class="font-body-md text-body-md text-secondary bg-surface/80 px-md py-xs rounded-full backdrop-blur-sm absolute">[Pie Chart]</span>
+</div>
+</div>
+<!-- Bottom Chart 2: Heatmap (Spans 2 cols) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl elevation-1 flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface">Peak Activity Hours</h3>
+<div class="flex items-center gap-sm font-label-md text-[10px] text-secondary">
+<span>Low</span>
+<div class="w-16 h-2 bg-gradient-to-r from-surface-container to-primary-container rounded-full"></div>
+<span>High</span>
+</div>
+</div>
+<div class="flex-1 min-h-[250px] chart-placeholder-bg rounded-lg flex items-center justify-center">
+<div class="grid grid-cols-7 grid-rows-5 gap-1 w-full max-w-md p-md opacity-60">
+<!-- Heatmap mock squares -->
+<div class="bg-surface-container rounded-sm aspect-square"></div><div class="bg-primary-container/20 rounded-sm aspect-square"></div><div class="bg-primary-container/40 rounded-sm aspect-square"></div><div class="bg-primary-container/80 rounded-sm aspect-square"></div><div class="bg-primary-container rounded-sm aspect-square"></div><div class="bg-primary-container/60 rounded-sm aspect-square"></div><div class="bg-surface-container rounded-sm aspect-square"></div>
+<div class="bg-primary-container/10 rounded-sm aspect-square"></div><div class="bg-primary-container/30 rounded-sm aspect-square"></div><div class="bg-primary-container/60 rounded-sm aspect-square"></div><div class="bg-primary-container rounded-sm aspect-square"></div><div class="bg-primary-container/90 rounded-sm aspect-square"></div><div class="bg-primary-container/40 rounded-sm aspect-square"></div><div class="bg-primary-container/10 rounded-sm aspect-square"></div>
+<div class="bg-surface-container rounded-sm aspect-square"></div><div class="bg-primary-container/10 rounded-sm aspect-square"></div><div class="bg-primary-container/30 rounded-sm aspect-square"></div><div class="bg-primary-container/60 rounded-sm aspect-square"></div><div class="bg-primary-container/50 rounded-sm aspect-square"></div><div class="bg-primary-container/20 rounded-sm aspect-square"></div><div class="bg-surface-container rounded-sm aspect-square"></div>
+</div>
+<span class="font-body-md text-body-md text-secondary bg-surface/80 px-md py-xs rounded-full backdrop-blur-sm absolute">[Heatmap Visualization]</span>
+</div>
+</div>
+</section>
+<!-- Table Section -->
+<section class="bg-surface-container-lowest rounded-xl elevation-1 overflow-hidden mb-xl">
+<div class="p-lg border-b border-outline-variant/30 flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg text-on-surface">Recent Signups</h3>
+<button class="text-primary-container font-label-md text-label-md hover:text-[#4f46e5] transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/30">
+<th class="p-md font-label-md text-label-md text-secondary font-semibold pl-lg">Business Name</th>
+<th class="p-md font-label-md text-label-md text-secondary font-semibold">Date</th>
+<th class="p-md font-label-md text-label-md text-secondary font-semibold">Plan</th>
+<th class="p-md font-label-md text-label-md text-secondary font-semibold pr-lg">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-md pl-lg font-medium">Urban Oasis Spa</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md">Pro</td>
+<td class="p-md pr-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                    Active
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-md pl-lg font-medium">Dr. Smith Dental</td>
+<td class="p-md text-on-surface-variant">Oct 23, 2023</td>
+<td class="p-md">Enterprise</td>
+<td class="p-md pr-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                    Active
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-md pl-lg font-medium">FitCore Studio</td>
+<td class="p-md text-on-surface-variant">Oct 21, 2023</td>
+<td class="p-md">Basic</td>
+<td class="p-md pr-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
+                                    Pending Setup
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-md pl-lg font-medium">Lumina Hair Salon</td>
+<td class="p-md text-on-surface-variant">Oct 20, 2023</td>
+<td class="p-md">Pro</td>
+<td class="p-md pr-lg">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                    Active
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</body></html>

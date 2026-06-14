@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ReservaPro - Peluquería Fulanita</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-surface-variant": "#44474c",
+                "outline-variant": "#c5c6cc",
+                "primary-fixed": "#d9e3f6",
+                "on-primary-container": "#8690a1",
+                "on-secondary-fixed-variant": "#404754",
+                "on-tertiary-fixed": "#261906",
+                "surface-container-low": "#f6f3f4",
+                "tertiary-container": "#342611",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#eae7e9",
+                "on-secondary-fixed": "#151c27",
+                "surface-container": "#f0edee",
+                "on-secondary-container": "#5e6572",
+                "on-primary-fixed": "#121c2a",
+                "on-primary-fixed-variant": "#3d4756",
+                "inverse-primary": "#bdc7d9",
+                "surface": "#fbf9fa",
+                "on-tertiary-fixed-variant": "#55442d",
+                "primary-fixed-dim": "#bdc7d9",
+                "inverse-surface": "#303031",
+                "error-container": "#ffdad6",
+                "surface-bright": "#fbf9fa",
+                "on-error-container": "#93000a",
+                "primary": "#0a1422",
+                "surface-variant": "#e4e2e3",
+                "tertiary-fixed": "#f8dfbf",
+                "surface-tint": "#555f6f",
+                "on-primary": "#ffffff",
+                "on-surface": "#1b1b1d",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#c0c7d6",
+                "primary-container": "#1f2937",
+                "surface-dim": "#dcd9da",
+                "secondary-fixed": "#dce2f3",
+                "secondary": "#585f6c",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#f3f0f1",
+                "tertiary-fixed-dim": "#dbc3a4",
+                "outline": "#75777c",
+                "background": "#fbf9fa",
+                "tertiary": "#1d1202",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#dce2f3",
+                "on-tertiary-container": "#a28c70",
+                "error": "#ba1a1a",
+                "on-background": "#1b1b1d",
+                "surface-container-highest": "#e4e2e3"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "unit": "4px",
+                "xxs": "4px",
+                "gutter": "24px",
+                "md": "16px",
+                "xs": "8px",
+                "xl": "32px",
+                "lg": "24px",
+                "sm": "12px",
+                "margin-desktop": "32px",
+                "margin-mobile": "16px",
+                "touch_target": "44px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "title-lg": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "title-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcd9da; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c5c6cc; }
+        
+        .success-animation {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-lg text-body-lg antialiased">
+<!-- Header Section -->
+<header class="w-full pt-xl pb-lg px-md flex flex-col items-center justify-center bg-surface border-b border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#1f2937 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="w-20 h-20 rounded-full bg-surface-container-high border-2 border-surface mb-md shadow-sm overflow-hidden flex items-center justify-center relative z-10">
+<img alt="Peluquería Avatar" class="w-full h-full object-cover" data-alt="A brightly lit, modern hair salon interior featuring warm wood accents, minimalist white styling stations, and lush green potted plants. The atmosphere is calm, welcoming, and professional, bathed in soft natural light coming from a large front window." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUmochybPknrac6HmY8MeGSu6DPvQdxVh3LOYDL4poIF_nrxaQPW2V-Oq1EOFKY9prPznxKUiUAOPN7ZuvpHnHusmCndvERQCBTW9r2uOHj5JpLvlGp8Q7i1xzQgFdurKogiBed0CyvVevVqH5FDIl8eHbyNwWkk9nMqHXzjnMmbH7wESUwl7t-P4kzy9rWFv11lMiYaxxgrOdOXZO-dCfV4v2ji7Nqg2DI2cbcZA_fysc6f5r-fy6">
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface text-center relative z-10">Peluquería Fulanita</h1>
+<p class="font-body-lg text-body-lg text-secondary mt-xs relative z-10">Reserva tu hora</p>
+</header>
+<!-- Main Booking Container -->
+<main class="max-w-3xl mx-auto px-md py-xl space-y-xl">
+<!-- Progress Indicator -->
+<nav aria-label="Progress">
+<ol class="flex items-center" role="list">
+<!-- Step 1 -->
+<li class="relative pr-sm sm:pr-lg">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-[#6366F1]"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#6366F1] hover:opacity-90 transition-colors" href="#">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-white">1</span>
+</a>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-sm text-label-sm uppercase tracking-wider text-[#6366F1] whitespace-nowrap">Servicio</span>
+</li>
+<!-- Step 2 -->
+<li class="relative pr-sm sm:pr-lg flex-1">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-outline-variant"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-surface-container-high border-2 border-outline-variant hover:border-[#6366F1] transition-colors" href="#">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">2</span>
+</a>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-sm text-label-sm uppercase tracking-wider text-secondary whitespace-nowrap">Día</span>
+</li>
+<!-- Step 3 -->
+<li class="relative pr-sm sm:pr-lg flex-1">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-outline-variant"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-surface-container-highest border-2 border-surface-variant" href="#">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">3</span>
+</a>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-sm text-label-sm uppercase tracking-wider text-outline whitespace-nowrap hidden sm:block">Hora</span>
+</li>
+<!-- Step 4 -->
+<li class="relative">
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-surface-container-highest border-2 border-surface-variant" href="#">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">4</span>
+</a>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-sm text-label-sm uppercase tracking-wider text-outline whitespace-nowrap hidden sm:block">Confirmar</span>
+</li>
+</ol>
+</nav>
+<div class="h-md"></div> <!-- Spacing after progress labels -->
+<!-- STEP 1: Services (Active) -->
+<section class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)] overflow-hidden border border-surface-variant">
+<div class="p-lg border-b border-surface-variant bg-surface-bright flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">content_cut</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">1. Selecciona un Servicio</h2>
+</div>
+<div class="p-lg grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Selected Card -->
+<label class="relative flex flex-col bg-surface rounded-xl p-md border-2 border-[#6366F1] shadow-sm cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input checked="" class="sr-only" name="service" type="radio" value="corte-mujer">
+<div class="flex justify-between items-start mb-sm">
+<div class="w-10 h-10 rounded-full bg-[#eef2ff] text-[#4f46e5] flex items-center justify-center">
+<span class="material-symbols-outlined fill-icon">face_3</span>
+</div>
+<span class="material-symbols-outlined text-[#6366F1] fill-icon">check_circle</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-xs">Corte Mujer</h3>
+<div class="flex items-center gap-xs text-secondary mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-md text-body-md">60 min</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex justify-between items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">PRECIO</span>
+<span class="font-title-lg text-title-lg text-on-surface">$25.000</span>
+</div>
+<!-- Left Accent for active state -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#6366F1] rounded-l-xl"></div>
+</label>
+<!-- Unselected Card -->
+<label class="relative flex flex-col bg-surface rounded-xl p-md border border-outline-variant shadow-sm cursor-pointer hover:border-[#6366F1] hover:bg-surface-container-low transition-colors group">
+<input class="sr-only" name="service" type="radio" value="corte-hombre">
+<div class="flex justify-between items-start mb-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center group-hover:bg-[#eef2ff] group-hover:text-[#4f46e5] transition-colors">
+<span class="material-symbols-outlined">face</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-[#6366F1] transition-colors">radio_button_unchecked</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-xs">Corte Hombre</h3>
+<div class="flex items-center gap-xs text-secondary mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-md text-body-md">45 min</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex justify-between items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">PRECIO</span>
+<span class="font-title-lg text-title-lg text-on-surface">$18.000</span>
+</div>
+</label>
+<!-- Unselected Card -->
+<label class="relative flex flex-col bg-surface rounded-xl p-md border border-outline-variant shadow-sm cursor-pointer hover:border-[#6366F1] hover:bg-surface-container-low transition-colors group">
+<input class="sr-only" name="service" type="radio" value="coloracion">
+<div class="flex justify-between items-start mb-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center group-hover:bg-[#eef2ff] group-hover:text-[#4f46e5] transition-colors">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-[#6366F1] transition-colors">radio_button_unchecked</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-xs">Coloración</h3>
+<div class="flex items-center gap-xs text-secondary mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-md text-body-md">120 min</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex justify-between items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">DESDE</span>
+<span class="font-title-lg text-title-lg text-on-surface">$45.000</span>
+</div>
+</label>
+<!-- Unselected Card -->
+<label class="relative flex flex-col bg-surface rounded-xl p-md border border-outline-variant shadow-sm cursor-pointer hover:border-[#6366F1] hover:bg-surface-container-low transition-colors group">
+<input class="sr-only" name="service" type="radio" value="peinado">
+<div class="flex justify-between items-start mb-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center group-hover:bg-[#eef2ff] group-hover:text-[#4f46e5] transition-colors">
+<span class="material-symbols-outlined">air</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-[#6366F1] transition-colors">radio_button_unchecked</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-xs">Peinado / Brushing</h3>
+<div class="flex items-center gap-xs text-secondary mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-md text-body-md">45 min</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex justify-between items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">PRECIO</span>
+<span class="font-title-lg text-title-lg text-on-surface">$20.000</span>
+</div>
+</label>
+</div>
+<div class="p-md bg-surface-bright border-t border-surface-variant flex justify-end">
+<button class="bg-[#1f2937] text-white px-lg min-h-touch_target rounded-lg font-label-sm text-label-sm uppercase tracking-wider shadow-sm hover:opacity-90 transition-colors flex items-center gap-xs" type="button">
+                    Siguiente Paso
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- STEP 2: Calendar (Collapsed/Preview State for design purposes) -->
+<section class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_rgba(0,0,0,0.06)] overflow-hidden border border-surface-variant opacity-80 pointer-events-none">
+<div class="p-lg border-b border-surface-variant bg-surface-bright flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">calendar_month</span>
+<h2 class="font-headline-md text-headline-md text-secondary">2. Elige un Día</h2>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-center mb-md">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high text-secondary"><span class="material-symbols-outlined">chevron_left</span></button>
+<span class="font-title-lg text-title-lg text-on-surface">Octubre 2023</span>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high text-secondary"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-xs text-center mb-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Do</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Lu</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Ma</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Mi</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Ju</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Vi</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary py-xs">Sa</span>
+</div>
+<div class="grid grid-cols-7 gap-xs text-center">
+<!-- Mock calendar days -->
+<div class="py-sm font-body-md text-body-md text-outline-variant">1</div>
+<div class="py-sm font-body-md text-body-md text-outline-variant">2</div>
+<div class="py-sm font-body-md text-body-md text-outline-variant">3</div>
+<div class="py-sm font-body-md text-body-md text-outline-variant">4</div>
+<div class="py-sm font-body-md text-body-md text-outline-variant">5</div>
+<div class="py-sm font-body-md text-body-md bg-[#eef2ff] text-[#4f46e5] rounded-full hover:bg-indigo-100 cursor-pointer">6</div>
+<div class="py-sm font-body-md text-body-md bg-[#eef2ff] text-[#4f46e5] rounded-full hover:bg-indigo-100 cursor-pointer">7</div>
+<!-- Selected Day Example -->
+<div class="py-sm font-body-md text-body-md bg-[#6366F1] text-white rounded-full shadow-sm cursor-pointer font-bold">8</div>
+<div class="py-sm font-body-md text-body-md bg-[#eef2ff] text-[#4f46e5] rounded-full hover:bg-indigo-100 cursor-pointer">9</div>
+<div class="py-sm font-body-md text-body-md bg-[#eef2ff] text-[#4f46e5] rounded-full hover:bg-indigo-100 cursor-pointer">10</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Space -->
+<footer class="py-xl text-center">
+<p class="font-body-md text-body-md text-secondary">Desarrollado por ReservaPro</p>
+</footer>
+</body></html>
